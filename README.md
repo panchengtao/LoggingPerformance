@@ -65,7 +65,7 @@ Mean latency = 7.225mcs
 8) 347.522 - 390.8500 = 0
 9) 390.850 - 434.1776 = 5
 
-# Benchmarks 1
+# Benchmarks 2
 
 ### Arrange
 
