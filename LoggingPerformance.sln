@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2026
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoggingPerformance.Serilog", "LoggingPerformance.Serilog\LoggingPerformance.Serilog.csproj", "{8C0236B3-A8A7-4D49-84A4-CCBEBBCD0956}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoggingPerformance.NLog", "LoggingPerformance.NLog\LoggingPerformance.NLog.csproj", "{5996F906-257C-4C07-91EB-FEFCF8411D09}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8C0236B3-A8A7-4D49-84A4-CCBEBBCD0956}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C0236B3-A8A7-4D49-84A4-CCBEBBCD0956}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C0236B3-A8A7-4D49-84A4-CCBEBBCD0956}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8C0236B3-A8A7-4D49-84A4-CCBEBBCD0956}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5996F906-257C-4C07-91EB-FEFCF8411D09}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5996F906-257C-4C07-91EB-FEFCF8411D09}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5996F906-257C-4C07-91EB-FEFCF8411D09}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5996F906-257C-4C07-91EB-FEFCF8411D09}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7CCDEEA0-F32A-4767-89DD-4580195FBE83}
+	EndGlobalSection
+EndGlobal
