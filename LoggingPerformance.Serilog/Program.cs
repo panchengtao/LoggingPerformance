@@ -35,6 +35,7 @@ namespace LoggingPerformance.Serilog
                     "Invalid second argument! Provide producers count as a second application argument.");
             }
 
+            Console.WriteLine("Serilog");
             Console.WriteLine("Stopwatch.IsHighResolution = {0}", Stopwatch.IsHighResolution);
 
             _countPerThread = _countPerThread / _producersCount;

@@ -22,22 +22,25 @@ namespace LoggingPerformance.NLog
         private static void Main(string[] args)
         {
             var config = new LoggingConfiguration();
+            
             var fileTarget = new FileTarget
             {
                 Name = "FileTarget",
-                FileName = "Log.txt"
-            };
-            var target = new BufferingTargetWrapper
-            {
-                BufferSize = 100,
-                SlidingTimeout = false,
-                FlushTimeout = 1000,
-                Name = "BufferedTarget",
-                WrappedTarget = fileTarget
+                FileName = "Log.txt",
+                KeepFileOpen = true,
+                ConcurrentWrites = false,
+                AutoFlush = false
             };
 
-            config.AddTarget("file", target);
-            config.LoggingRules.Add(new LoggingRule("*", LogLevel.Info, target));
+            var asyncFileTarget = new AsyncTargetWrapper(fileTarget)
+            {
+                TimeToSleepBetweenBatches = 0,
+                OverflowAction = AsyncTargetWrapperOverflowAction.Block,
+                BatchSize = 500
+            };
+
+            config.AddTarget("file", asyncFileTarget);
+            config.AddRuleForAllLevels(asyncFileTarget);
             LogManager.Configuration = config;
             LogManager.ReconfigExistingLoggers();
             LogProvider.SetCurrentLogProvider(new NLogLogProvider());
@@ -68,6 +71,7 @@ namespace LoggingPerformance.NLog
                     "Invalid second argument! Provide producers count as a second application argument.");
             }
 
+            Console.WriteLine("NLog");
             Console.WriteLine("Stopwatch.IsHighResolution = {0}", Stopwatch.IsHighResolution);
 
             _countPerThread = _countPerThread / _producersCount;
@@ -87,12 +91,12 @@ namespace LoggingPerformance.NLog
                 for (var producerIndex = 0; producerIndex < _producersCount; producerIndex++)
                     producers[producerIndex] = Task.Factory.StartNew(state =>
                     {
-                        var index = (int) state;
+                        var index = (int)state;
                         for (var i = 0; i < _countPerThread; i++)
                         {
                             var id = index * _countPerThread + i;
                             results[id] = stopWatch.ElapsedTicks;
-                            
+
                             Foo.Bar(id, _totalCount);
 
                             results[id] = stopWatch.ElapsedTicks - results[id];
@@ -112,7 +116,7 @@ namespace LoggingPerformance.NLog
                 Array.Sort(results);
 
                 // Show report message.
-                var throughput = _totalCount / ((double) stopWatch.ElapsedTicks / Stopwatch.Frequency);
+                var throughput = _totalCount / ((double)stopWatch.ElapsedTicks / Stopwatch.Frequency);
                 Console.WriteLine("Generated {0} values in {1}ms (throughput = {2:F3} ops per second)", _totalCount,
                     stopWatch.ElapsedMilliseconds, throughput);
 
@@ -140,9 +144,9 @@ namespace LoggingPerformance.NLog
             Console.WriteLine("Mean latency = {0:F3}mcs", mean);
 
             // Calculate bounds values.
-            var bound99 = (int) (values.Count * 99.0 / 100.0);
+            var bound99 = (int)(values.Count * 99.0 / 100.0);
             Console.WriteLine("99% observations less than = {0:F3}mcs", values[bound99]);
-            var bound9999 = (int) (values.Count * 99.99 / 100.0);
+            var bound9999 = (int)(values.Count * 99.99 / 100.0);
             Console.WriteLine("99.99% observations less than = {0:F3}mcs", values[bound9999]);
 
             var min = values[0];
