@@ -10,7 +10,7 @@ Logging performance comparison between Serilog and NLog.
 
 ### Computer infomation
 
-1. Intel Core i7 8665U @ 1.90GHz
+1. Intel Core i7 8665U @ 1.90GHz  
 2. 16GB DDR4-2667 (1333 MHz)
 3. Seagate FireCuda 520 SSD 1TB
 
@@ -28,16 +28,17 @@ Logging performance comparison between Serilog and NLog.
 
 ### Arrange
 
-Write target: File
-Test input count: 1000000
-Producer: 1
+Write target: File  
+Test input count: 1000000  
+Producer: 1  
 
 ### Serilog
 
-Generated 1000000 values in 3433ms (throughput = 291259,161 ops per second)
-Mean latency = 3,392mcs
-99% observations less than = 10,500mcs
+Generated 1000000 values in 3433ms (throughput = 291259,161 ops per second)  
+Mean latency = 3,392mcs  
+99% observations less than = 10,500mcs  
 99.99% observations less than = 986,500mcs
+
 0) 1,900 - 2,7600 = 689740
 1) 2,760 - 3,6200 = 199819
 2) 3,620 - 4,4800 = 56410
@@ -51,10 +52,11 @@ Mean latency = 3,392mcs
 
 ### NLog
 
-Generated 1000000 values in 2564ms (throughput = 389893,174 ops per second)
-Mean latency = 2,512mcs
-99% observations less than = 3,700mcs
-99.99% observations less than = 1945,500mcs
+Generated 1000000 values in 2564ms (throughput = 389893,174 ops per second)  
+Mean latency = 2,512mcs  
+99% observations less than = 3,700mcs  
+99.99% observations less than = 1945,500mcs  
+
 0) 1,100 - 1,3600 = 735053
 1) 1,360 - 1,6200 = 90460
 2) 1,620 - 1,8800 = 13521
@@ -70,16 +72,17 @@ Mean latency = 2,512mcs
 
 ### Arrange
 
-Write target: File
-Test input count: 5000000
-Producer: 1
+Write target: File  
+Test input count: 5000000  
+Producer: 1  
 
 ### Serilog
 
-Generated 5000000 values in 16495ms (throughput = 303110,984 ops per second)
-Mean latency = 3,261mcs
-99% observations less than = 11,200mcs
-99.99% observations less than = 955,200mcs
+Generated 5000000 values in 16495ms (throughput = 303110,984 ops per second)  
+Mean latency = 3,261mcs  
+99% observations less than = 11,200mcs  
+99.99% observations less than = 955,200mcs  
+
 0) 1,900 - 2,8300 = 3707027
 1) 2,830 - 3,7600 = 920038
 2) 3,760 - 4,6900 = 174384
@@ -93,10 +96,11 @@ Mean latency = 3,261mcs
 
 ### NLog
 
-Generated 5000000 values in 12803ms (throughput = 390529,235 ops per second)
-Mean latency = 2,511mcs
-99% observations less than = 3,600mcs
-99.99% observations less than = 1971,700mcs
+Generated 5000000 values in 12803ms (throughput = 390529,235 ops per second)  
+Mean latency = 2,511mcs  
+99% observations less than = 3,600mcs  
+99.99% observations less than = 1971,700mcs  
+
 0) 1,200 - 1,4400 = 4236069
 1) 1,440 - 1,6800 = 24155
 2) 1,680 - 1,9200 = 197400
