@@ -15,7 +15,7 @@ namespace LoggingPerformance.NLog
 {
     internal class Program
     {
-        private static int _countPerThread = 5000000;
+        private static int _countPerThread = 1000000;
         private static int _producersCount = 1;
         private static int _totalCount;
 
