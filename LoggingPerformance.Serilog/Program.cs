@@ -16,7 +16,7 @@ namespace LoggingPerformance.Serilog
         private static void Main(string[] args)
         {
             var log = new LoggerConfiguration()
-                .WriteTo.Async(a => a.File("Log.txt", buffered: true), 500, true)
+                .WriteTo.Async(a => a.File("Log.txt", buffered: true),  blockWhenFull: true)
                 .CreateLogger();
 
             Log.Logger = log;
