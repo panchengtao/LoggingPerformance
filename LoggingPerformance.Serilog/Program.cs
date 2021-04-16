@@ -9,14 +9,14 @@ namespace LoggingPerformance.Serilog
 {
     internal class Program
     {
-        private static int _countPerThread = 5000000;
+        private static int _countPerThread = 1000000;
         private static int _producersCount = 1;
         private static int _totalCount;
 
         private static void Main(string[] args)
         {
             var log = new LoggerConfiguration()
-                .WriteTo.File("Log.txt", buffered: true, flushToDiskInterval: TimeSpan.FromMilliseconds(1000))
+                .WriteTo.Async(a => a.File("Log.txt", buffered: true),  blockWhenFull: true)
                 .CreateLogger();
 
             Log.Logger = log;
